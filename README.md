@@ -1,132 +1,73 @@
-# 🚀 Landing Page React
+# React + TypeScript + Vite
 
-Uma landing page moderna, responsiva e totalmente acessível construída com React e Vite.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## ✨ Características
+Currently, two official plugins are available:
 
-- **100% Responsivo** - Otimizado para mobile, tablet e desktop
-- **Acessibilidade Completa** - Navegação por teclado, leitores de tela, ARIA labels
-- **Performance Otimizada** - Carregamento rápido e animações suaves
-- **SEO Ready** - Meta tags, Open Graph, estrutura semântica
-- **Design Moderno** - Gradientes, sombras e transições elegantes
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## 🛠️ Tecnologias Utilizadas
+## React Compiler
 
-- **React 18** - Biblioteca de interface
-- **Vite 4.5.3** - Build tool e dev server
-- **CSS3** - Estilos modernos com variáveis CSS
-- **HTML5 Semântico** - Estrutura acessível
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## 🚀 Como Executar
+## Expanding the ESLint configuration
 
-### Pré-requisitos
-- Node.js 20.9.0+ (compatível com a versão atual)
-- npm ou yarn
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-### Instalação e Execução
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-1. **Instalar dependências:**
-   ```bash
-   npm install
-   ```
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-2. **Executar em modo desenvolvimento:**
-   ```bash
-   npm run dev
-   ```
-
-3. **Acessar no navegador:**
-   ```
-   http://localhost:5173
-   ```
-
-## 📱 Recursos Mobile
-
-- Menu hambúrguer animado
-- Layout adaptativo
-- Touch-friendly buttons
-- Navegação otimizada
-- Carregamento rápido
-
-## ♿ Acessibilidade
-
-- Navegação completa por teclado
-- Suporte a leitores de tela
-- Contraste WCAG AA
-- Foco visível
-- Skip links
-- ARIA labels apropriados
-
-## 🎨 Personalização
-
-### Cores
-Edite as variáveis CSS em `src/index.css`:
-```css
-:root {
-  --primary-color: #667eea;
-  --secondary-color: #764ba2;
-  --accent-color: #ffd700;
-  /* ... */
-}
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-### Conteúdo
-- **Header**: Edite `src/components/Header.jsx`
-- **Hero**: Edite `src/components/Hero.jsx`
-- **Serviços**: Edite `src/components/Services.jsx`
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-### Imagens
-Substitua o placeholder na seção Hero por sua imagem:
-```jsx
-// Em src/components/Hero.jsx
-<div className="image-placeholder">
-  <img src="sua-imagem.jpg" alt="Descrição" />
-</div>
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-
-## 📁 Estrutura do Projeto
-
-```
-src/
-├── components/
-│   ├── Header.jsx          # Cabeçalho com navegação
-│   ├── Header.css          # Estilos do cabeçalho
-│   ├── Hero.jsx            # Seção principal
-│   ├── Hero.css            # Estilos da seção hero
-│   ├── Services.jsx        # Seção de serviços
-│   └── Services.css        # Estilos dos serviços
-├── App.jsx                 # Componente principal
-├── App.css                 # Estilos globais da app
-├── index.css               # Reset e variáveis CSS
-└── main.jsx                # Ponto de entrada
-```
-
-## 🔧 Scripts Disponíveis
-
-- `npm run dev` - Servidor de desenvolvimento
-- `npm run build` - Build para produção
-- `npm run preview` - Preview do build de produção
-
-## 🌐 Deploy
-
-Para fazer deploy em produção:
-
-1. **Build do projeto:**
-   ```bash
-   npm run build
-   ```
-
-2. **Upload da pasta `dist/` para seu servidor**
-
-## 📞 Suporte
-
-Se encontrar algum problema:
-
-1. Verifique se o Node.js está na versão correta
-2. Delete `node_modules` e `package-lock.json`
-3. Execute `npm install` novamente
-4. Execute `npm run dev`
-
----
-
-**Desenvolvido com ❤️ para máxima acessibilidade e performance**
