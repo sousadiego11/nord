@@ -1,5 +1,5 @@
-import { Button } from "../ui/button";
-import { Card } from "../ui/card";
+import { FloatingCard } from "../components/custom/card.float";
+import { Button } from "../components/ui/button";
 
 export function Hero() {
     return (
@@ -22,17 +22,9 @@ export function Hero() {
                 </div>
             </div>
 
-            <Card
-                className="
-                    bg-blue-600 w-[400px] h-[400px] flex items-center justify-center
-                    rounded-2xl
-                    transition-all duration-300 ease-out
-                    hover:-translate-y-3 hover:scale-105 hover:shadow-2xl hover:animate-float
-                    hover:cursor-pointer
-                "
-            >
+            <FloatingCard className="bg-blue-600  min-w-[400px] h-[400px] flex items-center justify-center">
                 <img src="icone.svg" alt="icone.svg" width={300} />
-            </Card>
+            </FloatingCard>
         </section>
     )
 }
