@@ -1,4 +1,3 @@
-import { FloatingCard } from "../components/custom/card.float";
 import { Button } from "../components/ui/button";
 
 export function Hero() {
@@ -18,10 +17,9 @@ export function Hero() {
                     Entrar em Contato
                 </Button>
             </div>
-
-            <FloatingCard className="bg-blue-600  min-w-[400px] h-[400px] flex items-center justify-center">
+            {/* <FloatingCard className="bg-blue-600  min-w-[400px] h-[400px] flex items-center justify-center">
                 <img src="icone.svg" alt="icone.svg" width={300} />
-            </FloatingCard>
+            </FloatingCard> */}
         </section>
     )
 }
